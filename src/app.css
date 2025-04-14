@@ -29,8 +29,8 @@
 }
 
 :root {
-    --background: hsla(0, 0%, 0%, 1);
-    --text: hsla(0, 0%, 90%, 1);
+    --background: hsla(0, 0%, 100%, 1);
+    --text: hsla(0, 0%, 0%, 1);
 
     --col-50: oklch(0.985 0 0);
     --col-100: oklch(0.97 0 0);
@@ -70,7 +70,6 @@ body {
 }
 
 button {
-    padding: 0.25rem 0.5rem;
     background-color: var(--col-800);
     color: white;
     border-radius: 3px;
@@ -89,3 +88,23 @@ button:hover {
     font-style: normal;
     line-height: 1;
 }
+
+input {
+    border-radius: 2px;
+    border: 1px solid var(--col-400);
+}
+
+textarea:focus, input:focus{
+    outline: none;
+    border: 1px solid var(--col-700);
+}
+
+input:disabled {
+    cursor: not-allowed;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    background-color: var(--col-700);
+}
+

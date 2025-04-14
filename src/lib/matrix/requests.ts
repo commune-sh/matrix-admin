@@ -65,9 +65,9 @@ export const registerOauthClient = async (registration_endpoint: string) => {
 
 
 
-export const getAuthMetadata = async (): Promise<ValidatedAuthMetadata | undefined> => {
+export const getAuthMetadata = async (homeserver: string): Promise<ValidatedAuthMetadata | undefined> => {
 
-    const url = `${PUBLIC_HOMESERVER}/_matrix/client/unstable/org.matrix.msc2965/auth_metadata`;
+    const url = `${homeserver}/_matrix/client/unstable/org.matrix.msc2965/auth_metadata`;
 
     const options: RequestInit = {
         headers: {
