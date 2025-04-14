@@ -1,0 +1,91 @@
+@import 'tailwindcss';
+
+@theme inline {
+    --color-bg: var(--bg);
+    --color-background: var(--background);
+    --color-primary: var(--primary);
+    --color-secondary: var(--secondary);
+    --color-light: var(--light);
+    --color-logo: var(--logo);
+    --color-border: var(--border);
+
+    --color-col-50: var(--col-50);
+    --color-col-100: var(--col-100);
+    --color-col-200: var(--col-200);
+    --color-col-300: var(--col-300);
+    --color-col-400: var(--col-400);
+    --color-col-500: var(--col-500);
+    --color-col-600: var(--col-600);
+    --color-col-700: var(--col-700);
+    --color-col-800: var(--col-800);
+    --color-col-900: var(--col-900);
+    --color-col-950: var(--col-950);
+}
+
+@font-face {
+    font-family: 'Overpass Mono';
+    src: url('/fonts/OverpassMono-VariableFont_wght.ttf');
+    font-display: swap;
+}
+
+:root {
+    --background: hsla(0, 0%, 0%, 1);
+    --text: hsla(0, 0%, 90%, 1);
+
+    --col-50: oklch(0.985 0 0);
+    --col-100: oklch(0.97 0 0);
+    --col-200: oklch(0.922 0 0);
+    --col-300: oklch(0.87 0 0);
+    --col-400: oklch(0.708 0 0);
+    --col-500: oklch(0.556 0 0);
+    --col-600: oklch(0.439 0 0);
+    --col-700: oklch(0.371 0 0);
+    --col-800: oklch(0.269 0 0);
+    --col-900: oklch(0.205 0 0);
+    --col-950: oklch(0.145 0 0);
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    height: -webkit-fill-available;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family: "Inter", "Twemoji", "Apple Color Emoji", "Segoe UI Emoji", "Arial", "Helvetica", sans-serif, "STIXGeneral", "Noto Color Emoji";
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    height: -webkit-fill-available;
+    width: 100%;
+    overscroll-behavior: none;
+}
+
+button {
+    padding: 0.25rem 0.5rem;
+    background-color: var(--col-800);
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.1s;
+    user-select: none;
+}
+
+button:hover {
+    background-color: var(--col-700);
+}
+
+.mono {
+    font-family: "Overpass Mono", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+    line-height: 1;
+}
