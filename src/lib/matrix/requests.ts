@@ -24,7 +24,7 @@ export const whoami = async (access_token: string) => {
 }
 
 
-export const registerOauthClient = async (registration_endpoint: string) => {
+export const registerOauthClient = async (registration_endpoint: string, base_url: string) => {
 
     if(!registration_endpoint) {
         throw new Error('Missing token endpoint')
@@ -32,11 +32,11 @@ export const registerOauthClient = async (registration_endpoint: string) => {
 
     let body = {
         application_type: "web",
-        client_name: "Admin",
-        client_uri: `${PUBLIC_BASE_URL}`,
+        client_name: "Matrix Admin",
+        client_uri: base_url,
         token_endpoint_auth_method: "none",
         redirect_uris: [
-            `${PUBLIC_BASE_URL}/oidc/callback`
+            `${base_url}/oidc/callback`
         ],
         response_types: [
             "code"
