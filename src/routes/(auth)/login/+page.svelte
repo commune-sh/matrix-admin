@@ -68,7 +68,15 @@ async function start() {
         if(response) {
             console.log("OIDC metadata fetched.", response)
             metadata = response;
+            // Store homeserver
+            await fetch('/api/auth/cookie', {
+                method: 'POST',
+                body: JSON.stringify({
+                    homeserver: homeserver,
+                }),
+            });
         }
+
     } catch (error) {
         console.error(error)
         bad_homeserver = true;
