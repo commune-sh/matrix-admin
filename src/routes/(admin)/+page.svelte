@@ -16,6 +16,10 @@ let {
     data: any
 } = $props();
 
+let homeserver = $derived.by(() => {
+    return data?.homeserver
+})
+
 let mas = $derived.by(() => {
     return data?.auth_metadata?.issuer
 })
@@ -34,7 +38,7 @@ let session = $derived.by(() => {
 })
 
 onMount(async() => {
-    await oidc_store.init()
+    await oidc_store.init(homeserver)
     if(data?.session && !session) {
         session_store.update(data.session, data.oidc_client_id)
     }

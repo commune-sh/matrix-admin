@@ -1,12 +1,10 @@
-import { 
-    PUBLIC_HOMESERVER
-} from '$env/static/public';
-
 import { redirect } from '@sveltejs/kit';
 
 import type { LayoutServerLoad } from './$types';
 
 export const load: LayoutServerLoad = async ({ fetch, params, url, cookies, request } ) => {
+    const homeserver = cookies.get('homeserver');
+
     const access_token = cookies.get('access_token');
     const refresh_token = cookies.get('refresh_token');
     const expires_in = cookies.get('expires_in');
@@ -19,7 +17,9 @@ export const load: LayoutServerLoad = async ({ fetch, params, url, cookies, requ
 
     const oidc_client_id = cookies.get('oidc_client_id');
 
-    let data = {};
+    let data = {
+        homeserver: homeserver,
+    };
 
     if(access_token && refresh_token && user_id && device_id && expires_in) {
         data.session = {
@@ -35,7 +35,7 @@ export const load: LayoutServerLoad = async ({ fetch, params, url, cookies, requ
         data.oidc_client_id = oidc_client_id
     }
 
-    const auth_url = `${PUBLIC_HOMESERVER}/_matrix/client/unstable/org.matrix.msc2965/auth_metadata`;
+    const auth_url = `${homeserver}/_matrix/client/unstable/org.matrix.msc2965/auth_metadata`;
 
     const res = await fetch(auth_url)
 	const auth_metadata = await res.json();

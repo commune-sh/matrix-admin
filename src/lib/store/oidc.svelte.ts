@@ -20,9 +20,9 @@ $effect.root(() => {
     })
 })
 
-async function fetchAuthMetadata() {
+async function fetchAuthMetadata(homeserver) {
     try {
-        const response = await getAuthMetadata()
+        const response = await getAuthMetadata(homeserver)
         if(response) {
             config.metadata = response
         }
@@ -33,8 +33,8 @@ async function fetchAuthMetadata() {
 
 export function createOIDCStore() {
 
-    async function init() {
-        await fetchAuthMetadata()
+    async function init(homeserver) {
+        await fetchAuthMetadata(homeserver)
     }
 
     return {
